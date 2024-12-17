@@ -1,0 +1,406 @@
+/* Reset e Configurações Gerais */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* Header */
+header {
+  background-color: #222;
+  color: #f90;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  text-align: center;
+  padding: 10px 0;
+  border-bottom: 2px solid #f90;
+}
+
+/* Containers de Login e Registo */
+.login-container,
+.register-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 80px auto;
+  /* Ajusta o espaçamento do topo */
+  width: 80%;
+  max-width: 400px;
+  background-color: #222;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.login-container h2,
+.register-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #f90;
+  text-align: center;
+}
+
+/* Inputs */
+.login-container input,
+.register-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.login-container input:focus,
+.register-container input:focus {
+  border-color: #f90;
+  outline: none;
+}
+
+/* Mensagens de Erro */
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+  display: block;
+  /* Posiciona a mensagem abaixo do input */
+  text-align: center;
+}
+
+/* Botão de Registo/Login */
+.login-btn,
+.register-btn {
+  background-color: #f90;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.login-btn:hover,
+.register-btn:hover {
+  background-color: #ff7b00;
+}
+
+/* Links de Navegação */
+.login-container p,
+.register-container p {
+  margin-top: 15px;
+  font-size: 0.9rem;
+}
+
+.login-container p a,
+.register-container p a {
+  color: #f90;
+  text-decoration: none;
+}
+
+.login-container p a:hover,
+.register-container p a:hover {
+  text-decoration: underline;
+}
+
+/* Melhorias para Responsividade */
+@media (max-width: 768px) {
+
+  .login-container,
+  .register-container {
+    width: 90%;
+  }
+}
+
+
+/* Header */
+.mypage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #222;
+  color: #f90;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.app-logo {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Main Content */
+.mypage-content {
+  padding: 20px 20px 20px;
+  text-align: left;
+}
+
+.welcome-message {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  color: #FFF;
+}
+
+.welcome-message span {
+  font-weight: bold;
+}
+
+/* Objetivo do mês */
+.goal-container {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+}
+
+.goal-text {
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.goal-chart {
+  width: 100px;
+  height: 100px;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke: #f90;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.percentage {
+  fill: #fff;
+  font-size: 0.4rem;
+  text-anchor: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+/* Footer */
+.mypage-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid #f90;
+}
+
+.footer-icon {
+  font-size: 1.5rem;
+  color: #f90;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: #ff7b00;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 60px;
+  /* Deixa o header visível */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: rgba(0, 0, 0, 0.95);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.menu-overlay.active {
+  display: flex;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  /* Alterado para branco */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #f90;
+}
+
+/* Footer no Menu */
+.menu-footer {
+  width: 100%;
+  /* Ocupa toda a largura */
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #444;
+  /* Linha separadora */
+}
+
+.menu-logout {
+  background-color: #f90;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  width: 80%;
+  /* Ocupa boa parte do footer */
+  text-align: center;
+}
+
+.menu-logout:hover {
+  background-color: #ff7b00;
+}
+
+/* Linha de Separação */
+.section-divider {
+  width: 90%;
+  height: 3px;
+  background-color: #f90;
+  margin: 10% auto;
+  border-radius: 5px;
+}
+
+/* Título da Seção */
+.section-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Blocos de Dicas de Treino */
+.training-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10%;
+}
+
+/* Blocos de Dicas de Treino */
+.training-card {
+  background-color: #222;
+  border-radius: 8px;
+  margin: 5px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.training-header {
+  height: 30px;
+  background-color: inherit;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 5px;
+}
+
+.training-card.easy .training-header {
+  background-color: #2e7d32; /* Verde */
+}
+
+.training-card.medium .training-header {
+  background-color: #fbc02d; /* Amarelo */
+}
+
+.training-card.hard .training-header {
+  background-color: #d32f2f; /* Vermelho */
+}
+
+.training-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.training-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.training-icon {
+  font-size: 2rem;
+  color: #fff;
+}

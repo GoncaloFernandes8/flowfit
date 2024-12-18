@@ -41,14 +41,17 @@ public class ClientController {
         boolean isAuthenticated = clientService.authenticateClient(authRequestClient.getEmail(), authRequestClient.getPassword());
         return ResponseEntity.ok(new AuthResponseClient(isAuthenticated));
     }
-    @PostMapping("/register")
-    public ResponseEntity<Client> createClient(@RequestBody Client client) {
-        // O id será gerado automaticamente
-        // O active será false por padrão
-        return ResponseEntity.ok(clientService.createClient(client));
+
+    @PostMapping("/createClient")
+    public ResponseEntity<Void> createClient(@RequestBody Client client) {
+        try {
+            clientService.createClient(client);
+            return ResponseEntity.ok().build();
+        } catch (Exception e) {
+            // Log the exception
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
     }
-
-
-
 
 }

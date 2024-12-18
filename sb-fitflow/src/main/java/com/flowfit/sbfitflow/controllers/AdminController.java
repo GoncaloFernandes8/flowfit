@@ -76,7 +76,7 @@ public class AdminController {
         }
     }
 
-    @PutMapping("/{id}")
+    @PutMapping("/{id}/updateClient")
     public ResponseEntity<Client> updateClient(@PathVariable Integer id, @RequestBody Client updatedClient) {
         Client existingClient = clientService.getClientById(id);
         if (existingClient == null) {

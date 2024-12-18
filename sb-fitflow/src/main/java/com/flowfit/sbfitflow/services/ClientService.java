@@ -23,8 +23,8 @@ public class ClientService {
         return clientRepository.findById(id).orElse(null);
     }
 
-    public Client createClient(Client client) {
-        return clientRepository.save(client);
+    public void createClient(Client client) {
+        clientRepository.save(client);
     }
 
     public Client updateClient(Client client) {

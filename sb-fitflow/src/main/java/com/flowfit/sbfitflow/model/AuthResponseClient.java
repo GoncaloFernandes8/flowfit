@@ -2,6 +2,7 @@ package com.flowfit.sbfitflow.model;
 
 
 public class AuthResponseClient {
+
     private boolean authenticated;
 
     public AuthResponseClient(boolean isAuthenticated) {

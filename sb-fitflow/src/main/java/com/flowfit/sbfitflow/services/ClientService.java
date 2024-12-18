@@ -30,39 +30,6 @@ public class ClientService {
     public Client updateClient(Client client) {
         return clientRepository.save(client);
     }
-    public void activateClient(Integer id) {
-        Client client = getClientById(id);
-        if (client != null) {
-            client.setStatus(Client.ClientStatus.ACTIVE);
-            updateClient(client);
-        } else {
-            throw new RuntimeException("Client not found with id: " + id);
-        }
-    }
-
-    public void deactivateClient(Integer id) {
-        Client client = getClientById(id);
-        if (client != null) {
-            client.setStatus(Client.ClientStatus.INACTIVE);
-            updateClient(client);
-        } else {
-            throw new RuntimeException("Client not found with id: " + id);
-        }
-    }
-
-    public void suspendClient(Integer id) {
-        Client client = getClientById(id);
-        if (client != null) {
-            client.setStatus(Client.ClientStatus.SUSPENDED);
-            updateClient(client);
-        } else {
-            throw new RuntimeException("Client not found with id: " + id);
-        }
-    }
-
-    public void deleteClient(Integer id) {
-        clientRepository.deleteById(id);
-    }
 
     public boolean authenticateClient(String email, String password) {
         Client client = clientRepository.findByEmail(email);

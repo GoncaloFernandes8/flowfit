@@ -1,10 +1,15 @@
 package com.flowfit.sbfitflow.controllers;
 
 
+import com.flowfit.sbfitflow.model.Admin;
+import com.flowfit.sbfitflow.model.Client;
 import com.flowfit.sbfitflow.services.AdminService;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import com.flowfit.sbfitflow.services.ClientService;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -12,11 +17,83 @@ import org.springframework.web.bind.annotation.RestController;
 public class AdminController {
 
     private final AdminService adminService;
+    private final ClientService clientService;
 
-    public AdminController(AdminService adminService) {
+    public AdminController(AdminService adminService, ClientService clientService) {
         this.adminService = adminService;
+        this.clientService = clientService;
+        
     }
 
+    @GetMapping
+    public ResponseEntity<List<Admin>> getAllAdmins() {
+        List<Admin> admins = adminService.findAllAdmins();
+        return new ResponseEntity<>(admins, HttpStatus.OK);
+    }
+
+    @PutMapping("/{id}/deactivate")
+    public ResponseEntity<Void> deactivateClient(@PathVariable Integer id) {
+        try {
+            adminService.deactivateClient(id);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PutMapping("/{id}/suspend")
+    public ResponseEntity<Void> suspendClient(@PathVariable Integer id) {
+        try {
+            adminService.suspendClient(id);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteClient(@PathVariable Integer id) {
+        adminService.deleteClient(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping("/{id}/activate")
+    public ResponseEntity<Void> activateClient(@PathVariable Integer id) {
+        try {
+            adminService.activateClient(id);
+            return ResponseEntity.ok().build();
+        } catch (RuntimeException e) {
+            return ResponseEntity.notFound().build();
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<Client> updateClient(@PathVariable Integer id, @RequestBody Client updatedClient) {
+        Client existingClient = clientService.getClientById(id);
+        if (existingClient == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        // Atualiza os campos do cliente existente com os dados do updatedClient
+        existingClient.setEmail(updatedClient.getEmail());
+        existingClient.setFirstName(updatedClient.getFirstName());
+        existingClient.setLastName(updatedClient.getLastName());
+        existingClient.setPhoneNumber(updatedClient.getPhoneNumber());
+        // Não atualizamos a senha aqui, isso deve ser feito em um endpoint separado por questões de segurança
+
+        // Atualiza o cliente no banco de dados
+        Client updatedClientResult = clientService.updateClient(existingClient);
+        return ResponseEntity.ok(updatedClientResult);
+    }
 
 
 

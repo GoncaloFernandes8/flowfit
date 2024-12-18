@@ -16,7 +16,6 @@ import java.util.List;
 public class ClientController {
 
 
-
     private final ClientService clientService;
 
     public ClientController(ClientService clientService) {
@@ -29,24 +28,7 @@ public class ClientController {
         return new ResponseEntity<>(clients, HttpStatus.OK);
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Client> updateClient(@PathVariable Integer id, @RequestBody Client updatedClient) {
-        Client existingClient = clientService.getClientById(id);
-        if (existingClient == null) {
-            return ResponseEntity.notFound().build();
-        }
 
-        // Atualiza os campos do cliente existente com os dados do updatedClient
-        existingClient.setEmail(updatedClient.getEmail());
-        existingClient.setFirstName(updatedClient.getFirstName());
-        existingClient.setLastName(updatedClient.getLastName());
-        existingClient.setPhoneNumber(updatedClient.getPhoneNumber());
-        // Não atualizamos a senha aqui, isso deve ser feito em um endpoint separado por questões de segurança
-
-        // Atualiza o cliente no banco de dados
-        Client updatedClientResult = clientService.updateClient(existingClient);
-        return ResponseEntity.ok(updatedClientResult);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Client> getClientById(@PathVariable Integer id) {
@@ -66,49 +48,7 @@ public class ClientController {
         return ResponseEntity.ok(clientService.createClient(client));
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteClient(@PathVariable Integer id) {
-        clientService.deleteClient(id);
-        return ResponseEntity.noContent().build();
-    }
 
-    @PutMapping("/{id}/activate")
-    public ResponseEntity<Void> activateClient(@PathVariable Integer id) {
-        try {
-            clientService.activateClient(id);
-            return ResponseEntity.ok().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
-    @PutMapping("/{id}/deactivate")
-    public ResponseEntity<Void> deactivateClient(@PathVariable Integer id) {
-        try {
-            clientService.deactivateClient(id);
-            return ResponseEntity.ok().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
-
-    @PutMapping("/{id}/suspend")
-    public ResponseEntity<Void> suspendClient(@PathVariable Integer id) {
-        try {
-            clientService.suspendClient(id);
-            return ResponseEntity.ok().build();
-        } catch (RuntimeException e) {
-            return ResponseEntity.notFound().build();
-        } catch (Exception e) {
-            e.printStackTrace();
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 
 }

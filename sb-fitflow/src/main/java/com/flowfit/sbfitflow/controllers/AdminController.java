@@ -9,7 +9,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @CrossOrigin(origins = "*", maxAge = 3600)
 @RestController
@@ -24,6 +26,23 @@ public class AdminController {
         this.clientService = clientService;
         
     }
+
+
+    @GetMapping("/{id}/verify")
+    public ResponseEntity<Map<String, String>> verifyClient(@PathVariable Integer id) {
+        Client client = clientService.getClientById(id);
+
+        if (client == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        Map<String, String> response = new HashMap<>();
+        response.put("status", client.getStatus().toString());
+
+        return ResponseEntity.ok(response);
+    }
+
+
 
     @GetMapping
     public ResponseEntity<List<Admin>> getAllAdmins() {

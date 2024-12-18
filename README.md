@@ -1,6 +1,6 @@
 # FlowFit - Bootcamp Project
 
-![FlowFit Logo](https://www.canva.com/design/DAGZjCN4_9U/mo3SmpEsSYCqymRVDZzPqA/view?utm_content=DAGZjCN4_9U&utm_campaign=designshare&utm_medium=link2&utm_source=uniquelinks&utlId=h6102d48fc5#2)  <!-- Substitua URL_DO_LOGO pelo link da imagem/logo do projeto, se houver -->
+![FlowFit Logo](2.png)
 
 FlowFit é um projeto desenvolvido durante o bootcamp, focado em [tema do projeto]. O objetivo deste projeto é [descrição breve do objetivo do projeto]. Durante o processo de desenvolvimento, utilizamos [tecnologias e ferramentas] para garantir um desempenho otimizado e uma experiência de usuário intuitiva.
 

@@ -1,0 +1,745 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+body {
+  background-color: #111;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+header {
+  font-family: 'Bebas Neue', sans-serif;
+  padding: 30px 60px;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+  z-index: 2;
+}
+
+/* Fundo Principal */
+.background-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 90vh;
+  position: relative;
+  z-index: 1; /* Garante que o conteúdo fique visível */
+}
+
+
+
+.logo {
+  color: #f90;
+}
+
+/* Vídeo de Fundo */
+  .background-video {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Mantém o vídeo no fundo */
+    pointer-events: none;
+    opacity: 0.5; /* Reduz opacidade do vídeo */
+}
+
+/* Home Content */
+.home-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  color: #fff; /* Garante visibilidade do texto */
+  text-align: center;
+  z-index: 1;
+}
+
+/* Carrossel */
+.carousel-container {
+  position: relative;
+  overflow: hidden;
+  width: 90%;
+  max-width: 500px;
+  margin: 0 auto; /* Centraliza horizontalmente */
+  margin-top: auto;
+  display: flex;
+  flex-direction: column; /* Organiza os elementos em coluna */
+  align-items: center; /* Centraliza na horizontal */
+  height: auto; /* Altura dinâmica */
+  gap: 10px; /* Espaço entre carrossel e os pontos */
+}
+
+.carousel-track {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 100%;
+}
+
+.carousel-item {
+  min-width: 100%;
+  text-align: center;
+  font-size: 1rem;
+  padding: 8px;
+  background: rgba(0, 0, 0, 0.6); /* Menor opacidade na borda escura */
+  color: #fff; /* Cor do texto */
+  border-radius: 8px; /* Cantos arredondados */
+  margin-bottom: 5px;
+
+}
+
+/* Indicadores do Carrossel */
+.carousel-indicators {
+  display: flex;
+  justify-content: center;
+  gap: 6px; /* Espaço entre os pontos */
+  margin-top: 0;
+  margin-bottom: 30px;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  background-color: #444;
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+}
+
+.dot.active {
+  background-color: #ff7b00;
+}
+
+/* Botões */
+.btn-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 80px;
+}
+
+.btn {
+  display: block;
+  background-color: #0c0c1e; /* Azul escuro */
+  color: #f90; /* Texto laranja */
+    padding: 15px 30px; /* Espaçamento interno */
+    text-decoration: none;
+    border-radius: 30px; /* Bordas arredondadas */
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  width: 80%;
+  max-width: 300px;
+  z-index: 2; /* Garante que os botões fiquem acima */
+  border: 2px solid #ffc107; /* Borda amarela */
+  transition: background-color 0.3s ease, color 0.3s ease;}
+
+.btn:hover {
+  background-color: #ff7b00;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .main-content h1 {
+    font-size: 2rem;
+  }
+
+  .btn {
+    font-size: 1rem;
+    padding: 8px 15px;
+  }
+}
+
+/* Login Form */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 400px;
+  background-color: #222;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.login-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #f90;
+}
+
+.login-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.login-container input:focus {
+  border-color: #f90;
+  outline: none;
+}
+
+.login-container input.error {
+  border-color: red;
+}
+
+.login-container input.success {
+  border-color: green;
+}
+
+.login-btn {
+  background-color: #f90;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-btn:hover {
+  background-color: #ff7b00;
+}
+
+.login-container p {
+  margin-top: 10px;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.login-container p a {
+  color: #f90;
+  text-decoration: none;
+}
+
+.login-container p a:hover {
+  text-decoration: underline;
+}
+
+.login-container .error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+.footer-icon.active {
+  color: #fff; /* Cor branca para o ícone ativo */
+}
+
+/* Registo Form */
+.register-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 50px auto;
+  width: 80%;
+  max-width: 400px;
+  background-color: #222;
+  padding: 30px;
+  border-radius: 8px;
+}
+
+.register-container h2 {
+  font-family: 'Bebas Neue', sans-serif;
+  margin-bottom: 15px;
+  font-size: 1.8rem;
+  color: #f90;
+}
+
+.register-container input {
+  padding: 10px;
+  font-size: 1rem;
+  border: 1px solid #555;
+  border-radius: 5px;
+  background-color: #333;
+  color: #fff;
+  transition: border-color 0.3s ease-in-out;
+}
+
+.register-container input:focus {
+  border-color: #f90;
+  outline: none;
+}
+
+.register-container input.error {
+  border-color: red;
+}
+
+.register-container input.success {
+  border-color: green;
+}
+
+.register-btn {
+  background-color: #f90;
+  color: #000;
+  padding: 10px 20px;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.register-btn:hover {
+  background-color: #ff7b00;
+}
+
+/* Formulário Compartilhado */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+input {
+  border: 1px solid #555;
+  padding: 10px;
+  font-size: 1rem;
+  border-radius: 5px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  outline: none;
+}
+
+input.error {
+  border-color: red !important;
+}
+
+input.success {
+  border-color: green !important;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.9rem;
+  margin-top: 5px;
+}
+
+/* AQUI COMEÇA APOS LOGIN DO USER */
+
+/* Header */
+.mypage-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  background-color: #222;
+  color: #f90;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.app-logo {
+  font-size: 1.4rem;
+  letter-spacing: 1px;
+}
+
+.menu-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+/* Main Content */
+.mypage-content {
+  padding: 60px 20px 20px;
+  text-align: left;
+}
+
+.welcome-message {
+  font-size: 1.2rem;
+  margin: 10px 0;
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  color: #FFF;
+}
+
+.welcome-message span {
+  font-weight: bold;
+}
+
+/* Objetivo do mês */
+.goal-container {
+  background-color: #333;
+  border-radius: 10px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 120px;
+}
+
+.goal-text {
+  font-size: 1rem;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+.goal-chart {
+  width: 100px;
+  height: 100px;
+}
+
+.circular-chart {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+.circle-bg {
+  fill: none;
+  stroke: #ddd;
+  stroke-width: 3.8;
+}
+
+.circle {
+  fill: none;
+  stroke: #f90;
+  stroke-width: 3.8;
+  stroke-linecap: round;
+  animation: progress 1s ease-out forwards;
+}
+
+@keyframes progress {
+  0% {
+    stroke-dasharray: 0 100;
+  }
+}
+
+.percentage {
+  fill: #fff;
+  font-size: 0.4rem;
+  text-anchor: middle;
+  font-family: 'Montserrat', sans-serif;
+  font-weight: bold;
+}
+
+/* Footer */
+.mypage-footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background-color: #222;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 10px 0;
+  border-top: 2px solid #f90;
+}
+
+.footer-icon {
+  font-size: 1.5rem;
+  color: #f90;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.footer-icon:hover {
+  color: #ff7b00;
+}
+
+nav {
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* Menu Overlay */
+.menu-overlay {
+  position: fixed;
+  top: 60px;
+  /* Deixa o header visível */
+  left: 0;
+  width: 100%;
+  height: calc(100% - 60px);
+  background-color: rgba(0, 0, 0, 0.95);
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 999;
+  padding: 20px;
+}
+
+.menu-overlay.active {
+  display: flex;
+}
+
+.menu-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  text-align: center;
+  width: 100%;
+}
+
+.menu-item {
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1.5rem;
+  color: #fff;
+  /* Alterado para branco */
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.menu-item:hover {
+  color: #f90;
+}
+
+/* Footer no Menu */
+.menu-footer {
+  width: 100%;
+  /* Ocupa toda a largura */
+  display: flex;
+  justify-content: center;
+  padding: 10px 0;
+  border-top: 1px solid #444;
+  /* Linha separadora */
+}
+
+.menu-logout {
+  background-color: #f90;
+  color: #000;
+  border: none;
+  padding: 10px 20px;
+  font-family: 'Bebas Neue', sans-serif;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border-radius: 5px;
+  width: 80%;
+  /* Ocupa boa parte do footer */
+  text-align: center;
+}
+
+.menu-logout:hover {
+  background-color: #ff7b00;
+}
+
+/* Linha de Separação */
+.section-divider {
+  width: 90%;
+  height: 3px;
+  background-color: #f90;
+  margin: 10% auto;
+  border-radius: 5px;
+}
+
+/* Título da Seção */
+.section-title {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+/* Blocos de Dicas de Treino */
+.training-tips {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 0 10%;
+}
+
+/* Blocos de Dicas de Treino */
+.training-card {
+  background-color: #222;
+  border-radius: 8px;
+  margin: 5px 0;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+  overflow: hidden;
+}
+
+.training-header {
+  height: 30px;
+  background-color: inherit;
+  color: #fff;
+  text-align: center;
+  font-weight: bold;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+  padding-top: 5px;
+}
+
+.training-card.easy .training-header {
+  background-color: #2e7d32; /* Verde */
+}
+
+.training-card.medium .training-header {
+  background-color: #fbc02d; /* Amarelo */
+}
+
+.training-card.hard .training-header {
+  background-color: #d32f2f; /* Vermelho */
+}
+
+.training-content {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin-top: 10px;
+}
+
+.training-info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+.training-icon {
+  font-size: 2rem;
+  color: #fff;
+}
+
+.qrcode-container{
+  margin-top: 25%;
+}
+.qrcode-container h2, .qrcode-container p{
+  padding: 5% 0 10% 0;
+}
+.urlqrcode{
+  display: none;
+}
+
+.mytraining-content {
+  padding: 60px 20px;
+}
+
+.training-block {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.training-block.left {
+  flex-direction: row;
+}
+
+.training-block.right {
+  flex-direction: row-reverse;
+}
+
+.training-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.training-details {
+  margin: 0 20px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.training-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #f90;
+}
+
+.training-details p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.training-description {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}
+
+.training-description .listleft{
+  text-align: left;
+}
+
+.training-description .listright{
+  text-align: right;
+}
+
+.mynutrition-content {
+  padding: 60px 20px;
+}
+
+.nutrition-block {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  background-color: #222;
+  padding: 15px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.nutrition-block.left {
+  flex-direction: row;
+}
+
+.nutrition-block.right {
+  flex-direction: row-reverse;
+}
+
+.nutrition-image img {
+  width: 150px;
+  height: 150px;
+  border-radius: 8px;
+}
+
+.nutrition-details {
+  margin: 0 20px;
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.nutrition-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: #f90;
+}
+
+.nutrition-details p {
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.nutrition-description {
+  background-color: #333;
+  padding: 15px;
+  border-radius: 8px;
+  color: #bbb;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+}

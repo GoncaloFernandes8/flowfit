@@ -1,2 +1,0 @@
-# flowfit
-bootcamp project
